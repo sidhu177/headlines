@@ -1,2 +1,2 @@
-# headlines
-Flask based example site to create a newsite
+# Headlines
+This site will pull headlines from various different sites into a single page.

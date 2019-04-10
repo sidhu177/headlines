@@ -1,5 +1,6 @@
 import feedparser
 from flask import Flask
+from flask import render_template
 
 app = Flask(__name__)
 
@@ -14,17 +15,12 @@ def cbc():
 def ctv():
     return get_news('ctv')
 
-def get_news(publication):
+@app.route("/<publication>")
+def get_news(publication="cbc"):
     feed = feedparser.parse(RSS_Feed[publication])
     first_article = feed['entries'][0]
-    return """<html>
-      <body>
-           <h1> Top Headlines </h1>
-           <b>{0}</b> <br/>
-           <i>{1}</i> <br/>
-           <p>{2}</p> <br/>
-      </body>
-    </html>""".format(first_article.get("title"), first_article.get("image"), first_article.get("description"))
+    return render_template("home.html")
+
 
 if __name__=='__main__':
     app.run(port=5000)

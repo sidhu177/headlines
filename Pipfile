@@ -8,6 +8,8 @@ verify_ssl = true
 [packages]
 flask = "*"
 feedparser = "*"
+urllib2 = "*"
+urllib = "*"
 
 [requires]
 python_version = "3.7"
